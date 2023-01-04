@@ -9,4 +9,9 @@ typedef enum {
     OP_RETURN,
 } OpCode;
 
+//gist this is for storing the bytecode and other stuff that the book hasn't revealed yet
+typedef struct {
+    uint8_t* code;
+} Chunk;
+
 #endif
