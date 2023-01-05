@@ -10,8 +10,11 @@ typedef enum {
 } OpCode;
 
 //gist this is for storing the bytecode and other stuff that the book hasn't revealed yet
+//gist this is a dynamic array
 typedef struct {
-    uint8_t* code;
+    int count; //* this is the number of used entries in the dynamic array
+    int capacity; //* this is the size of the dynamic array
+    uint8_t* code; //* this is the stuff in the dynamic array
 } Chunk;
 
 #endif
