@@ -19,10 +19,13 @@ typedef struct
     uint8_t* code; //* this is the stuff in the dynamic array
 } Chunk;
 
-//desc this initialises a Chunk instance's members
+//gist this initialises a Chunk instance's members
 void initChunk(Chunk* chunk);
 
-//desc this appends a byte to the end of a Chunk instance
+//gist this deallocates the memory allocated to a Chunk instance then completely resets it
+void freeChunk(Chunk* chunk);
+
+//gist this appends a byte to the end of a Chunk instance
 void writeChunk(Chunk* chunk, uint8_t byte);
 
 #endif

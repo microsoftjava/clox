@@ -13,7 +13,7 @@
     (type*)reallocate(pointer, sizeof(type) * (oldCount), \
     sizeof(type) * (newCount))
 
-//desc this will handle all the dynamic memory management in clox
+//gist this will handle all the dynamic memory management in clox
 void* reallocate(void* pointer, size_t oldSize, size_t newSize);
 
 #endif

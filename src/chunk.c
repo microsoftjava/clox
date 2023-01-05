@@ -13,6 +13,14 @@ void initChunk(Chunk* chunk)
     chunk->code = NULL;
 }
 
+//gist this is the implementation of the freeChunk() function mentioned in chunk.h
+//gist this will free the given Chunk instance's allocated memory then initialise its members
+void freeChunk(Chunk* chunk)
+{
+    FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+    initChunk(chunk);
+}
+
 //gist this is the implementation of the writeChunk() function mentioned in chunk.h
 //gist this appends a byte to the end of the given Chunk instance
 //gist and allocates more memory if the given Chunk instance doesn't have room for the byte
