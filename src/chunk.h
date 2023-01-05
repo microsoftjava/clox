@@ -17,4 +17,6 @@ typedef struct {
     uint8_t* code; //* this is the stuff in the dynamic array
 } Chunk;
 
+void initChunk(Chunk* chunk);
+
 #endif
