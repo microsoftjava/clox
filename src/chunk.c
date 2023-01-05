@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "chunk.h"
+#include "memory.h"
 
 //gist this is the implementation of the initChunk() function mentioned in chunk.h
 //gist this initialises the members of the given Chunk instance
