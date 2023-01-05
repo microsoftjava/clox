@@ -15,7 +15,7 @@ void disassembleChunk(Chunk* chunk, const char* name)
     }
 }
 
-//gist this is the simpleInstruction() function mentioned in debug.h
+/////*gist*/ this is the simpleInstruction() function mentioned in debug.h
 //gist this displays the name of an instruction then returns the next offset past the given offset
 static int simpleInstruction(const char* name, int offset)
 {
