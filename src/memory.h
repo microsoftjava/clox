@@ -13,6 +13,10 @@
     (type*)reallocate(pointer, sizeof(type) * (oldCount), \
     sizeof(type) * (newCount))
 
+//gist this deallocates the memory allocated to a Chunk instance
+#define FREE_ARRAY(type, pointer, oldCount) \
+    reallocate(pointer, sizeof(type) * (oldCount), 0)
+
 //gist this will handle all the dynamic memory management in clox
 void* reallocate(void* pointer, size_t oldSize, size_t newSize);
 
