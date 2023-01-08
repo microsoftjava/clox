@@ -4,7 +4,7 @@
 
 #include "common.h"
 
-//gist for now, numbers will be double-precision floating point
+//gist for now, numbers will be double-precision floating-point
 typedef double Value;
 
 #endif
