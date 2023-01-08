@@ -7,4 +7,12 @@
 //gist for now, numbers will be double-precision floating-point
 typedef double Value;
 
+//gist this is a dynamic array for numbers
+typedef struct 
+{
+    int capacity;
+    int count;
+    Value* values;
+} ValueArray;
+
 #endif
