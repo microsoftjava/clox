@@ -8,6 +8,7 @@
 //gist this is for the operation codes (opcodes)
 typedef enum
 {
+    OP_CONSTANT,
     OP_RETURN,
 } OpCode;
 
