@@ -71,6 +71,9 @@ int addConstant(Chunk* chunk, Value value)
     return chunk->constants.count - 1;
 }
 
+//gist this is the getLine() function mentioned in chunk.h
+//gist this uses binary search to get the line number
+//gist of the given byte offset in the given Chunk instance
 int getLine(Chunk* chunk, int instruction)
 {
     int start = 0;
