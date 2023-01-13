@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "debug.h"
+#include "value.h"
 
 //gist this is the disassembleChunk() function mentioned in debug.h
 //gist this prints the given Chunk instance's name then disassembles all of its instructions
@@ -22,6 +23,7 @@ static int constantInstruction(const char* name, Chunk* chunk, int offset)
     printf("%-16s %4d '", name, constant);
     printValue(chunk->constants.values[constant]);
     printf("'\n");
+    return offset + 2;
 }
 
 /////*gist*/ this is the simpleInstruction() function mentioned in debug.h

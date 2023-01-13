@@ -36,3 +36,10 @@ void freeValueArray(ValueArray* array)
     FREE_ARRAY(Value, array->values, array->capacity);
     initValueArray(array);
 }
+
+//gist this is the printValue() function mentioned in value.h
+//gist this prints the given Value
+void printValue(Value value)
+{
+    printf("%g", value);
+}

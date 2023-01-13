@@ -24,4 +24,7 @@ void writeValueArray(ValueArray* array, Value value);
 //gist this deallocates the memory allocated to a ValueArray instance then completely resets it
 void freeValueArray(ValueArray* array);
 
+//gist this prints a Value
+void printValue(Value value);
+
 #endif
