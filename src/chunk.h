@@ -19,6 +19,7 @@ typedef struct
     int count; //* this is the number of used entries in the dynamic array
     int capacity; //* this is the size of the dynamic array
     uint8_t* code; //* this is the stuff in the dynamic array
+    int* lines; //* this stores the line numbers of each opcode instruction
     ValueArray constants; //* this stores the constants
 } Chunk;
 
@@ -29,7 +30,7 @@ void initChunk(Chunk* chunk);
 void freeChunk(Chunk* chunk);
 
 //gist this appends a byte to the end of a Chunk instance
-void writeChunk(Chunk* chunk, uint8_t byte);
+void writeChunk(Chunk* chunk, uint8_t byte, int line);
 
 //gist this appends a constant to the end of the ValueArray of a Chunk instance
 int addConstant(Chunk* chunk, Value value);
