@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "common.h"
+#include "debug.h"
 #include "vm.h"
 
 //gist this is the virtual machine that will be used
@@ -18,11 +19,16 @@ void freeVM()
 //gist this runs the bytecode
 static InterpretResult run()
 {
-    #define READ_BYTE() (*vm.ip++)
-    #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+#define READ_BYTE() (*vm.ip++)
+#define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
 
     for (;;)
     {
+#ifdef DEBUG_TRACE_EXECUTION
+    disassembleInstruction(vm.chunk,
+                           (int)(vm.ip - vm.chunk->code));
+#endif
+
         uint8_t instruction;
         switch (instruction = READ_BYTE())
         {
@@ -40,8 +46,8 @@ static InterpretResult run()
         }
     }
 
-    #undef READ_BYTE
-    #undef READ_CONSTANT
+#undef READ_BYTE
+#undef READ_CONSTANT
 }
 
 //gist this is the implementation of interpret() from vm.h
