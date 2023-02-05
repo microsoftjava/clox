@@ -12,3 +12,11 @@ void initVM()
 //gist this is the implementation of freeVM() from vm.h
 void freeVM()
 {}
+
+//gist this is the implementation of interpret() from vm.h
+InterpretResult interpret(Chunk* chunk)
+{
+    vm.chunk = chunk;
+    vm.ip = vm.chunk->code;
+    return run();
+}
