@@ -64,6 +64,7 @@ static InterpretResult run()
                 push(constant);
                 break;
             }
+            case OP_NEGATE: push(-pop()); break;
             case OP_RETURN:
             {
                 printValue(pop());
