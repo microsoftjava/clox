@@ -8,13 +8,31 @@
 //gist this is the virtual machine that will be used
 VM vm;
 
+//gist this sets the top of the stack to the first element
+static void resetStack()
+{vm.stackTop = vm.stack;}
+
 //gist this is the implementation of initVM() from vm.h
 void initVM()
-{}
+{resetStack();}
 
 //gist this is the implementation of freeVM() from vm.h
 void freeVM()
 {}
+
+//gist this is the implementation of push() from vm.h
+void push(Value value)
+{
+    *vm.stackTop = value;
+    vm.stackTop++;
+}
+
+//gist this is the implementation of pop() from vm.h
+Value pop()
+{
+    vm.stackTop--;
+    return *vm.stackTop;
+}
 
 //gist this runs the bytecode
 static InterpretResult run()
