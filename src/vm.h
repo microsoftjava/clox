@@ -31,7 +31,7 @@ void initVM();
 void freeVM();
 
 //gist this interprets each instruction in the given chunk
-InterpretResult interpret(Chunk* chunk);
+InterpretResult interpret(const char* source);
 
 //gist this pushes a Value onto the stack
 void push(Value value);
