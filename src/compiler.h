@@ -2,7 +2,9 @@
 #ifndef clox_compiler_h
 #define clox_compiler_h
 
+#include "vm.h"
+
 //gist this compiles the sourcecode into bytecode
-void compile(const char* source);
+bool compile(const char* source, Chunk* chunk);
 
 #endif
