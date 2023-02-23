@@ -35,6 +35,10 @@ static char advance()
     return scanner.current[-1];//* this does the same thing as *(scanner.current - 1)
 }
 
+//gist this returns the character that the scanner is currently at
+static char peek()
+{return *scanner.current;}
+
 //gist this determines if the current character matches the expected character
 //gist and moves the scanner to the next character if they match
 static bool match(char expected)
@@ -67,9 +71,33 @@ static Token errorToken(const char* message)
     return token;
 }
 
+//gist this skips whitespace characters
+static void skipWhitespace()
+{
+    for (;;)
+    {
+        char c = peek();
+        switch (c)
+        {
+            case ' ':
+            case '\r':
+            case '\t':
+                advance();
+                break;
+            case '\n':
+                scanner.line++;
+                advance();
+                break;
+            default:
+                return;
+        }
+    }
+}
+
 //gist this is the implementation of scanToken() from scanner.h
 Token scanToken()
 {
+    skipWhitespace();
     scanner.start = scanner.current;
 
     if (isAtEnd()) return makeToken(TOKEN_EOF);
