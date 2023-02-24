@@ -18,6 +18,13 @@ typedef struct
 //gist this is the parser
 Parser parser;
 
+//gist this is the chunk being compiled
+Chunk* compilingChunk;
+
+//gist this returns the current chunk
+static Chunk* currentChunk()
+{return compilingChunk;}
+
 //gist this reports an error at the given token
 static void errorAt(Token* token, const char* message)
 {
@@ -72,10 +79,32 @@ static void consume(TokenType type, const char* message)
     errorAtCurrent(message);
 }
 
+//gist this appends a byte to the end of the current chunk
+static void emitByte(uint8_t byte)
+{
+    writeChunk(currentChunk(), byte, parser.previous.line);
+}
+
+//gist this appends 2 bytes to the end of the current chunk
+static void emitBytes(uint8_t byte1, uint8_t byte2)
+{
+    emitByte(byte1);
+    emitByte(byte2);
+}
+
+//gist this appends an OP_RETURN instruction to the end of the current chunk
+static void emitReturn()
+{emitByte(OP_RETURN);}
+
+//gist this ends the compilation of the current chunk
+static void endCompiler()
+{emitReturn();}
+
 //gist this is the implementation of compile() from compiler.h
 bool compile(const char* source, Chunk* chunk)
 {
     initScanner(source);
+    compilingChunk = chunk;
 
     parser.hadError = false;
     parser.panicMode = false;
@@ -83,5 +112,6 @@ bool compile(const char* source, Chunk* chunk)
     advance();
     expression();
     consume(TOKEN_EOF, "Expect end of expression.");
+    endCompiler();
     return !parser.hadError;
 }
