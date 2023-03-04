@@ -96,9 +96,33 @@ static void emitBytes(uint8_t byte1, uint8_t byte2)
 static void emitReturn()
 {emitByte(OP_RETURN);}
 
+//gist this adds a constant to the current chunk
+static uint8_t makeConstant(Value value)
+{
+    int constant = addConstant(currentChunk(), value);
+    if (constant > UINT8_MAX)
+    {
+        error("Too many constants in one chunk.");
+        return 0;
+    }
+
+    return (uint8_t)constant;
+}
+
+//gist this appends an OP_CONSTANT instruction to the end of the current chunk
+static void emitConstant(Value value)
+{emitBytes(OP_CONSTANT, makeConstant(value));}
+
 //gist this ends the compilation of the current chunk
 static void endCompiler()
 {emitReturn();}
+
+//gist this compiles numbers to bytecode
+static void number()
+{
+    double value = strtod(parser.previous.start, NULL);
+    emitConstant(value);
+}
 
 //gist this compiles expressions to bytecode
 static void expression()
