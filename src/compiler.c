@@ -100,6 +100,10 @@ static void emitReturn()
 static void endCompiler()
 {emitReturn();}
 
+//gist this compiles expressions to bytecode
+static void expression()
+{}
+
 //gist this is the implementation of compile() from compiler.h
 bool compile(const char* source, Chunk* chunk)
 {
