@@ -117,6 +117,13 @@ static void emitConstant(Value value)
 static void endCompiler()
 {emitReturn();}
 
+//gist this compiles expressions inside brackets to bytecode
+static void grouping()
+{
+    expression();
+    consume(TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
+}
+
 //gist this compiles numbers to bytecode
 static void number()
 {
